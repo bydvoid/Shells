@@ -1,0 +1,13 @@
+[Unit]
+Description=Aria2 Service Use user of www
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/etc/aria2
+User=www
+ExecStart=/usr/local/bin/aria2c --conf-path=/usr/local/etc/aria2/aria2.conf
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
